@@ -33,3 +33,21 @@ otherwise they will be catched
 so it is better to structure your dockerfile for maximum catching 
 
 
+
+
+dockerregistry//where all images are present
+
+dockerengine//which run on your machine and interact with your terminal
+
+terminal// with which you interact
+
+
+docker exec <container_name_or_id> ls /path/to/directory
+//now here this is command to see folder structure of image
+
+docker exec -it <container_name_or_id> /bin/bash
+//this command it to interact with image
+
+
+
+
