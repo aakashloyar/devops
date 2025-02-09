@@ -48,6 +48,8 @@ docker exec <container_name_or_id> ls /path/to/directory
 docker exec -it <container_name_or_id> /bin/bash
 //this command it to interact with image
 
+exit ->to exit out of container
+
 
 now let us see docker volumes
 
@@ -88,6 +90,35 @@ docker run -d -p 3000:3000 --name backend --network my_custom_network image_tag
 
 
 now you can check using the docker logs container id
+
+
+
+pushing images to docker repository
+if aakashloyar/check is my repository and i want to push 
+imgaak               v1        e59eb40c46a4   About a minute ago   1.11GB
+This image to docker
+
+
+aakash@aakash-VivoBook-ASUSLaptop-X421EAYB-X413EA:~$ docker tag imgaak:v1 aakashloyar/check:v1
+aakash@aakash-VivoBook-ASUSLaptop-X421EAYB-X413EA:~$ docker push aakashloyar/check:v1
+The push refers to repository [docker.io/aakashloyar/check]
+d8b7c43d87af: Pushed 
+acc3e4b7863d: Pushed 
+eeee99d8d340: Pushed 
+f8f2a6b080b3: Mounted from aakashloyar/imgaak 
+5840fe29196a: Mounted from aakashloyar/imgaak 
+809420f2cf10: Mounted from aakashloyar/imgaak 
+b5117a85f41c: Mounted from aakashloyar/imgaak 
+1419c9484da1: Mounted from aakashloyar/imgaak 
+dafb8aed9f7f: Mounted from aakashloyar/imgaak 
+41d4dc7516bb: Mounted from aakashloyar/imgaak 
+c0f51bbdc37d: Mounted from aakashloyar/imgaak 
+91b542912d12: Mounted from aakashloyar/imgaak 
+v1: digest: sha256:8f97d9ead13f243efd4379f0c012065951ac9a518fe2dffbfdb5363c3e88d6b4 size: 2839
+aakash@aakash-VivoBook-ASUSLaptop-X421EAYB-X413EA:~$ 
+
+
+This is the way to push 
 
 
 
