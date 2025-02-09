@@ -17,7 +17,10 @@ services:
       - "3000:3000"
     environment:
       MONGO_URL: "mongodb://mongocont:27017"
-
+    volumes:
+      - ./:/app  # 🔹 Bind mount: Syncs local './app' directory with '/app' in the container
+    working_dir: /app  # Set working directory to '/app'
+  
 volumes:
   mongodb_data:    
 

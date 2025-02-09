@@ -172,6 +172,8 @@ services:
 volumes:
   mongodb_data:    
 
+network automatically created for them 
+volume is created by use 
 
 this is upated one for directly building image 
 
@@ -185,6 +187,46 @@ he is ready to contribute
 
 docker compose down
 //to down it 
+
+
+//now we will learn bind mounts
+//to make for any change that happen in local also be seen in container
+
+docker run -v /path/on/host:/path/in/container image_name
+
+
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongocont
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend22:
+    build: .
+    container_name: backend_app
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URL: "mongodb://mongocont:27017"
+    volumes:
+      - ./app:/app  # 🔹 Bind mount: Syncs local './app' directory with '/app' in the container
+    working_dir: /app  # Set working directory to '/app'
+
+volumes:
+  mongodb_data:
+
+
+
+
+apt-get update
+apt-get install vim-> to use vim command inside container
 
 
 

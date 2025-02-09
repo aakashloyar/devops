@@ -4,7 +4,7 @@ require("dotenv").config(); // If using a .env file
 const app=express();
 const mongouri=process.env.MONGO_URL
 app.get('/',(req,res)=>{
-    res.send('Hello world is mine');
+    res.send('Hello world ine');
 })
 console.log(mongouri)
 try{
