@@ -49,5 +49,20 @@ docker exec -it <container_name_or_id> /bin/bash
 //this command it to interact with image
 
 
+now let us see docker volumes
+
+now if we start a mongo images and save some data and kill the container the data will be lost
+
+we can solve this problem with volumes
+docker volume create volume_database
+docker run -v volume_database:/data/db -p 27017:27017 mongo
+/data/db are folders where data is stored in mongo-> you can use command given above to check
+
+now if kill the container and start it again the data that we have stored will be there
+
+
+
+
+
 
 
