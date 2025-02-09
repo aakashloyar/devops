@@ -1,7 +1,8 @@
 const express=require('express')
 const mongoose=require('mongoose')
+require("dotenv").config(); // If using a .env file
 const app=express();
-const mongouri="mongodb://mongo:27017/mydatabase"
+const mongouri=process.env.MONGO_URL
 app.get('/',(req,res)=>{
     res.send('Hello world is mine');
 })

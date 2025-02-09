@@ -119,11 +119,72 @@ aakash@aakash-VivoBook-ASUSLaptop-X421EAYB-X413EA:~$
 
 
 This is the way to push 
+docker build -t imgaak:v1 .
+creating a image with tagname
+
+docker compose -> to aviod large number of commands
+
+version:'3.8'
+services:
+  mongodb:
+    image: mongodb
+    container_name: mongocont
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend22:
+    image: imgexp
+    container_name: backend_app
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URL: "mongodb://mongodb:27017"
+
+volumes:
+  mongodb_data:    
 
 
 
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongocont
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend22:
+    build: .
+    container_name: backend_app
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URL: "mongodb://mongocont:27017"
+
+volumes:
+  mongodb_data:    
 
 
+this is upated one for directly building image 
+
+
+//this is the way how developers work
+//they give the github repo to a new developer and he has to just
+run this command
+docker-compose up -d --build
+
+he is ready to contribute
+
+docker compose down
+//to down it 
 
 
 
