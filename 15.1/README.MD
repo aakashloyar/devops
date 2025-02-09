@@ -61,6 +61,38 @@ docker run -v volume_database:/data/db -p 27017:27017 mongo
 now if kill the container and start it again the data that we have stored will be there
 
 
+docker volumes ls
+docker network ls
+
+docker ps -> to show the running containers
+docker ps -a -> to show all the containers
+
+//so now you can have application that may need to talk to other container
+
+//suppose on 1 container your application is running and on other your database it running 
+//so how they can interact 
+
+step1-> create a network
+ docker network create my_custom_network
+
+step2-> start mongo container with some name 
+docker run -d -v volume_database:/data/db --name mongo --network my_custom_network -p 27017:27017 mongo
+
+here name is mongo as you can see
+
+step3-> replace the uri in you app "localhost" with this "name" 
+const mongouri="mongodb://mongo:27017/mydatabase"
+
+step4-> run the image 
+docker run -d -p 3000:3000 --name backend --network my_custom_network image_tag
+
+
+now you can check using the docker logs container id
+
+
+
+
+
 
 
 
