@@ -71,7 +71,7 @@ docker ps -a -> to show all the containers
 
 //so now you can have application that may need to talk to other container
 
-//suppose on 1 container your application is running and on other your database it running 
+//suppose on 1 container your application is running and on other your database is running 
 //so how they can interact 
 
 step1-> create a network
