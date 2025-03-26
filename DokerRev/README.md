@@ -95,6 +95,51 @@ docker build -t neuraai .
 # docker image/ps -a 
 -> a -> for list of all
 
+# docker run -p 3000:3000 -e DATABASE_URL="" image_name
+-> passing env variable
+
+*** Volumes in Docker ***
+-> suppose there is container we start it 
+-> we also start mongodb 
+-> now we close it 
+-> now data lost
+-> but volumes help us to persist data
+
+# docker volumes ls
+-> list of volumes 
+
+# docker create volume name
+-> create volume name
+
+# docker run -v name:/data/db -d -p 27017:27017 mongo
+-> running an image with volume
+-> now the the container it will store the data in data/db folder
+
+*** Network in Docker ***
+-> system can talk to container by port mapping 
+-> but container cannot talk to each other 
+-> so network help in this
+
+# docker network ls
+-> getting network list 
+
+# docker network create testnet
+-> creating a network testnet
+
+
+# docker run -d -v test:/data/db --name mymongo --network testnet -p 27017:27017 mongo
+-> now this will start mongo attached to same network
+-> this name is super important
+
+# docker run -d -p 3000:3000 --name backend --network testnet image_tag
+-> now this is project
+-> in this there will be mongourl 
+-> mongodb://localhost:27017
+replace this localhost with mymongo-> it is like a ip in the network
+-> mongodb://mymongo:27017
+-> now these can talk with each other
+
+
 
 
 
