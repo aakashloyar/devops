@@ -140,6 +140,20 @@ replace this localhost with mymongo-> it is like a ip in the network
 -> now these can talk with each other
 
 
+*** Bind mounts ***
+->to make for any change that happen in local also be seen in container
+-> as a developer you work on local machine 
+-> so when you change the container code donot change
+-> Bind mounts help here
+
+# docker run -p -v ./app:/nextapp/app 3000:3000 nextapp
+-> this command help in running the container
+-> with bind mounts
+-> here app folder of local monts to nextapp/app folder of container
+-> now change in any file will go to container
+* mount app folder to -> nextapp/app folder of container
+
+
 
 
 

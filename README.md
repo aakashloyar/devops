@@ -96,6 +96,13 @@ docker build -t neuraai .
 # docker image/ps -a 
 -> a -> for list of all
 
+# docker run -p -v ./app:/nextapp/app 3000:3000 nextapp
+-> this command help in running the container
+-> with bind mounts
+-> here app folder of local monts to nextapp/app folder of container
+-> now change in any file will go to container
+* mount app folder to -> nextapp/app folder of container
+
 
 
 
