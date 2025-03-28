@@ -103,6 +103,12 @@ docker build -t neuraai .
 -> now change in any file will go to container
 * mount app folder to -> nextapp/app folder of container
 
+*** Bind mounts ***
+->to make for any change that happen in local also be seen in container
+-> as a developer you work on local machine 
+-> so when you change the container code donot change
+-> Bind mounts help here
+
 
 
 
