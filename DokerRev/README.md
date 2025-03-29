@@ -152,6 +152,7 @@ replace this localhost with mymongo-> it is like a ip in the network
 -> here app folder of local monts to nextapp/app folder of container
 -> now change in any file will go to container
 * mount app folder to -> nextapp/app folder of container
+-> -v for volume or bind mount depend on how you declare
 
 
 
