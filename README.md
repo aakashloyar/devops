@@ -109,6 +109,10 @@ docker build -t neuraai .
 -> so when you change the container code donot change
 -> Bind mounts help here
 
+*** npm run build ***
+necessary for dockerfile 
+correct the errors
+
 
 
 
