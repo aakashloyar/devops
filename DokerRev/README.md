@@ -155,6 +155,57 @@ replace this localhost with mymongo-> it is like a ip in the network
 -> -v for volume or bind mount depend on how you declare
 
 
+# docker run --rm -it image_id sh
+-> to see the folder structure of image that is not running
+
+# docker rm container_name
+-> removing a container
+-> kill is stop a running container
+
+# docker system prune -a --volumes
+-> removing unused volumes
+
+# docker image prune -a
+-> removing unused images
+
+# docker system prune -a --volumes
+-> remove all unused whatever
+
+*** Important ***
+* RUN npx prisma migrate dev --name init
+* RUN npx prisma generate
+* CMD ["npm start"]
+
+* CMD ["sh", "-c", "npx prisma migrate dev --name init && npx prisma generate && npm start"]
+
+-> 1st is incorrect 
+-> 2nd is correct
+-> in first these execute during build time even before container start
+-> in 2nd these execute during run time 
+-> Since RUN commands execute at build time, your PostgreSQL container might not be running yet.
+-> The migration command (npx prisma migrate dev --name init) depends on a running database, which won’t be available at build time.
+
+# docker compose build
+-> build the images in compose file
+
+# docker compose up -d
+-> start
+
+# docker compose down 
+-> end
+
+# docker compose up -d --build
+-> build and start
+
+
+*** Caching in layers ***
+-> suppose 5 layers
+-> 2 layers are same so will be cached
+-> all now will built again
+
+
+
+
 
 
 
