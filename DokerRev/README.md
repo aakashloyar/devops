@@ -203,6 +203,122 @@ replace this localhost with mymongo-> it is like a ip in the network
 -> 2 layers are same so will be cached
 -> all now will built again
 
+*** docker-compose file ***
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install || (echo "Install failed!" && exit 1)//if error then show error and exit
+
+COPY . .
+
+RUN npx prisma generate
+
+RUN npm run build || (echo "Build failed!" && exit 1)
+
+EXPOSE 3000
+
+CMD ["sh", "-c", "npm run db:deploy && npm start"]
+
+"db:deploy": "npx prisma migrate deploy"
+-> in script of package.json add this
+
+
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npx prisma generate
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["sh", "-c", "npx prisma migrate dev && npm start"]
+-> sh -c run a shell and execute the given command string
+
+
+version: "3.8"
+services:
+  postgre:
+    image: postgres
+    container_name: postgre
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgre_data:/var/lib/postgresql/data
+
+  neuraai:
+    build: .
+    container_name: neuraai_app
+    depends_on:
+      - postgre
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://myuser:mypassword@postgre:5432/mydatabase
+      //postgre is service name used as ip 
+      //network is automatically added no require to add network
+  
+volumes:
+  postgre_data:  
+
+
+
+RUN chmod +x script.sh
+-> execute the script.sh file
+
+
+
+
+
+# sudo lsof -i :5432
+-> status of port 
+
+
+*** healthcheck: ***
+servicea
+healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+serviceb      
+depends_on:
+      servicea:
+        condition: service_healthy
+->check health and run b only when a is healthy     
+
+
+*** dockerhub push ***
+# docker tag neuraai aakashloyar/neuraai:latest
+->giving a tagname to image
+# docker push aakashloyar/neuraai:latest
+->pushing the image
+
+# docker pull aakashloyar/neuraai:latest
+->pulling image
+
+
+
+
+
+
+
+
 
 
 
