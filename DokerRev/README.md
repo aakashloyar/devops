@@ -312,6 +312,11 @@ depends_on:
 # docker pull aakashloyar/neuraai:latest
 ->pulling image
 
+*** how team works ***
+-> give github repo link 
+-> and docker compose file 
+-> clone and compose up that's it all fine
+
 
 
 
