@@ -316,6 +316,7 @@ depends_on:
 -> give github repo link 
 -> and docker compose file 
 -> clone and compose up that's it all fine
+-> also u can give image
 
 
 
