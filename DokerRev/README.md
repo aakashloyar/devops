@@ -318,7 +318,10 @@ depends_on:
 -> clone and compose up that's it all fine
 -> also u can give image
 
-
+*** Dockerfile ***
+-> while building your dockerfile you build your image 2 times
+-> 1 is build time and other is production time
+-> that contains your working code
 
 
 
