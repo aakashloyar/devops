@@ -323,6 +323,8 @@ depends_on:
 -> 1 is build time and other is production time
 -> that contains your working code
 
+-> learnt about php
+
 
 
 
