@@ -324,6 +324,7 @@ depends_on:
 -> that contains your working code
 
 -> learnt about php
+-> kubernetes containerisation
 
 
 
