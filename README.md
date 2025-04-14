@@ -113,6 +113,9 @@ docker build -t neuraai .
 necessary for dockerfile 
 correct the errors
 
+-> learnt about php
+-> kubernetes containerisation
+-> 
 
 
 
