@@ -168,6 +168,8 @@ Being DevOps-aware helps backend engineers build better software:
  ✔ Performance Profiling & Optimization
  ✔ Alerting & Incident Response
 
+-> async/sync
+
 
 
 
